@@ -1,23 +1,16 @@
----
-layout: default
----
+<!doctype html>
 
-<div class="home">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-  <h1 class="page-heading">Posts</h1>
+  <title>Chad C Brandt</title>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  <link rel="stylesheet" href="styles/main.css">
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+</head>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<body>
+  <h1>The web home of Chad C Brandt</h1>
+</body>
+</html>
