@@ -1,7 +1,9 @@
+//GLOBAL VARIABLES ////////////////////////////
+
 //Declare array for all possible equations
 	let possibilities = [];
 	let resultsTable = null;
-	let difficultySetting = 1;
+	let difficultySetting = 2;
 	let playerProductIndex = null;
 	let playerWins = 5;
 	let computerWins = -1;
@@ -9,10 +11,8 @@
 	const validCards = /[Aa1-9]/;
 	const cardDiv = document.getElementById("cards");
 	const cards = Array.from(cardDiv.getElementsByTagName("input"));
-	console.log(cards);
-
+//Check to see if an input on each card is valid
 	cards.forEach(card => card.addEventListener('change', function() {
-		console.log("On Change Fired");
 		if(!validCards.test(card.value)) {
 			card.classList.add('invalid');
 		}
@@ -26,7 +26,6 @@
 	const scoreboard = document.getElementById("scoreboard");
 	const playerScoreboard = Array.from(scoreboard.querySelectorAll(".player-wins"));
 	const computerScoreboard = Array.from(scoreboard.querySelectorAll(".computer-wins"));
-	console.log(scoreboard);
 
 //Add listener to DRAW button
 	const drawButton = document.getElementById("draw");
@@ -45,35 +44,42 @@
 //Add listener to DIFFICULTY buttons
 	const difficultyDiv = document.getElementById("difficulty");
 	const difficultyButtons = Array.from(difficultyDiv.getElementsByTagName("button"));
-	var currentDifficulty = difficultyButtons[1];
+	let currentDifficulty = difficultyButtons[1];
 	//console.log(difficultyButtons);
 	//console.log(currentDifficulty);
 	difficultyButtons.forEach(difficultyButton => difficultyButton.addEventListener('click', setDifficulty));
 
 //Add listener for PRODUCT FIELD so the Enter key will submit the product
 	document.getElementById('product').addEventListener('keypress', function(e) {
-		if(e.keyCode === 13) {
+		if(e.key === 'Enter') {
 			e.preventDefault();
-			//console.log("Enter clicked");
+			console.log("Enter clicked");
 			getScores();
 		}
 	});
 
-	//Target the scores table
+	/*Target the scoreboard table: Got rid of this
 	const scoresDiv = document.getElementById("scores-table");
 	const playerProductCell = scoresDiv.querySelector(".player-product");
 	const computerProductCell = scoresDiv.querySelector(".computer-product");
 	const playerScoreCell = scoresDiv.querySelector(".player-score");
 	const computerScoreCell = scoresDiv.querySelector(".computer-score");
 	const playerWinsCell = scoresDiv.querySelector(".player-wins");
-	const computerWinsCell = scoresDiv.querySelector(".computer-wins");
-	const possibilitiesTableDisplay = document.getElementById("possibilities-table");
+	const computerWinsCell = scoresDiv.querySelector(".computer-wins"); */
+
+	//Target the game-result DIV
+	const gameResultDiv = document.querySelector('.game-result');
+	const gameResultH1 = gameResultDiv.querySelector('h1');
+
+	//Target the choices DIV
+	const choicesDiv = document.getElementById("choices-div");
 
 	//Add listener to the PLAY AGAIN button
+	const resetDiv = document.querySelector(".reset-div");
 	const resetButtonCell = document.getElementById("reset-button");
 	resetButtonCell.addEventListener('click', resetGame);
 
-	//Figure out which button was clicked and update the difficulty setting
+	//WHEN PLAYER CLICKS DIFFICULTY BUTTON: Figure out which button was clicked and update the difficulty setting
 	function setDifficulty(e) {
 		//console.log(this.innerHTML);
 		currentDifficulty.classList.remove('active');
@@ -90,7 +96,8 @@
 		console.log(difficultySetting);
 	}
 
-	//Draw the cards if a player chooses
+	//WHEN PLAYER CLICKS "Draw some for me" BUTTON
+	//Draw the cards for a player
 	function drawCards() {
 		cards[0].value = Math.floor((Math.random() * 9) + 1);
 		cards[1].value = Math.floor((Math.random() * 9) + 1);
@@ -100,45 +107,100 @@
 		drawText.style.display = "none";
 	}
 
-	//calculate and report the user's and computer's scores
+	//WHEN PLAYER CLICKS "Submit" BUTTON
+	//Calculate and report the user's and computer's scores
 	function getScores() {
 		console.log("SUBMIT button clicked");
-		var playerDiv = document.getElementById("player-score");
-		var playerAnswer = playerDiv.getElementsByTagName("input");
-		var playerProduct = parseInt(playerAnswer[0].value);
+		let playerDiv = document.getElementById("player-score");
+		let playerAnswer = playerDiv.getElementsByTagName("input"); //Player's product
+		let playerProduct = parseInt(playerAnswer[0].value);
 		if (verifyProduct(playerProduct)) {
-			playerDifference = Math.abs(2500 - playerProduct);
-			var compChoice = getComputerDifference(difficultySetting);
-
+			playerDifference = Math.abs(2500 - playerProduct); //Player's score
+			var compChoice = getComputerDifference(difficultySetting); //Computer's score
 
 			playerDiv.style.display = "none";
+			
+			/*OLD scoresTable code
 			scoresDiv.style.display = "block";
-
 			playerProductCell.innerHTML = playerProduct + "<br />" + "<br />" + "(" + possibilities[playerProductIndex].firstFactor + " x " + possibilities[playerProductIndex].secondFactor + ")";
 			computerProductCell.innerHTML = resultsTable[compChoice].product + "<br />" + "<br />" + "(" + resultsTable[compChoice].firstFactor + " x " + resultsTable[compChoice].secondFactor + ")";
 			playerScoreCell.innerHTML = playerDifference;
-			computerScoreCell.innerHTML = resultsTable[compChoice].difference;
+			computerScoreCell.innerHTML = resultsTable[compChoice].difference;*/
+			
+			//Print results to choicesDiv
+			let choicesTable = document.createElement('table');
+			//Make the choices table body with all of the choices listed
+			let choicesTableBody = '<tbody>';
+			for (var i=0; i<resultsTable.length; i++) {
+				choicesTableBody = choicesTableBody += '<tr>';
+				if(i===playerProductIndex){
+					choicesTableBody += '<td style="background-color: green;">You</td>';
+				} else {
+					choicesTableBody += '<td></td>';
+				}
+				choicesTableBody += `
+				<td>${resultsTable[i].firstFactor} x ${resultsTable[i].secondFactor} = ${resultsTable[i].product}</td>
+				<td>${resultsTable[i].difference}</td>
+				`
+				if(i===compChoice){
+					choicesTableBody += '<td style="background-color: green;">Computer</td>';
+				} else {
+					choicesTableBody += '<td></td>';
+				}
+				choicesTableBody += '</tr>';
+			};
+			choicesTableBody = choicesTableBody += '</tbody>';
+			//Put the choicesTableBody inside the choicesTable
+			choicesTable.innerHTML = `
+			<tr>
+				<th>Your Choice</th>
+				<th>Equation</th>
+				<th>Score</th>
+				<th>Computer's Choice</th>
+			</tr>
+			${choicesTableBody}
+			`;
+			choicesDiv.appendChild(choicesTable);
+			choicesDiv.style.display = "block";
+
+			//Update scoreboard
 			if (playerDifference === resultsTable[compChoice].difference) {
+				/* For old scoresDiv
 				playerWinsCell.innerHTML = "TIE!";
 				playerWinsCell.style.backgroundColor = "green";
 				computerWinsCell.innerHTML = "TIE!"
-				computerWinsCell.style.backgroundColor = "green";
+				computerWinsCell.style.backgroundColor = "green"; */
+				gameResultDiv.style.display = "block";
+				gameResultH1.innerHTML = "The game is a tie.";
+				resetDiv.style.display = "block";
+				scoreboard.scrollIntoView({behavior: "smooth"});
 			} else if (playerDifference < resultsTable[compChoice].difference) {
+				/* For old scoresDiv
 				playerWinsCell.innerHTML = "WINNER!";
-				playerWinsCell.style.backgroundColor = "green";
+				playerWinsCell.style.backgroundColor = "green"; */
 				playerWins--;
 				updateScoreboard(playerScoreboard, playerWins);
+				gameResultDiv.style.display = "block";
+				gameResultH1.innerHTML = "You won this game!";
+				resetDiv.style.display = "block";
+				scoreboard.scrollIntoView({behavior: "smooth"});
 			} else {
+				/* For old scoresDiv
 				computerWinsCell.innerHTML = "WINNER!"
-				computerWinsCell.style.backgroundColor = "green";
+				computerWinsCell.style.backgroundColor = "green"; */
 				computerWins++;
 				updateScoreboard(computerScoreboard, computerWins);
+				gameResultDiv.style.display = "block";
+				gameResultH1.innerHTML = "The computer won this game.";
+				resetDiv.style.display = "block";
+				scoreboard.scrollIntoView({behavior: "smooth"});
 			}
 		} else {
 			alert("That product is not possible with the four numbers drawn! Check your math again.");
 		}
 	}
 
+	//CALLED BY getScores
 	//Ensure that the player's product is possible, given the four cards drawn
 	function verifyProduct(p) {
 		var productsTable = possibilities.map(function(possibility) {
@@ -154,24 +216,22 @@
 		}
 	}
 
+	//CALLED BY getScores
 	//Use the user-selected difficulty to select the computer's chosen equation
 	function getComputerDifference(difficulty) {
 		switch(difficulty) {
 		case 1:
 			return Math.floor((Math.random() * 3) + 4);
-			break;
 		case 2:
 			return Math.floor((Math.random() * 4) + 1);
-			break;
 		default:
 			return Math.floor(Math.random() * 3);
-			break;
 		}
 	}
 
+	//CALLED WHEN USER CLICKS "Play" BUTTON
 	//Grab the cards input by user and store them in an array
 	function getCards() {
-		console.log("PLAY button clicked");
 
 		//Check to ensure all cards contain acceptable values
 		var cardError = false;
@@ -207,6 +267,7 @@
 			}
 		}
 
+	//CALLED BY getCards
 	//Populate (global) possibilities array with objects. Twelve unique possibilites exist.
 	function multiplyCards(cardValues) {
 
@@ -277,8 +338,16 @@
 	  	}
 		});
 
-		console.table(differencesOrdered);
-		return(differencesOrdered);
+		//console.table(differencesOrdered);
+		//Prune multiples out of differencesOrdered Table
+		let prunedDifferences = differencesOrdered;
+		for (var i=0; i<(prunedDifferences.length-1); i++) {
+			if(prunedDifferences[i].difference === prunedDifferences[i+1].difference){
+				prunedDifferences.splice(i, 1);
+			}
+		}
+		console.table(prunedDifferences);
+		return(prunedDifferences);
 
 		/*
 		A loop to iterate through all of the possible products and find the average (3032)
@@ -294,7 +363,8 @@
 		console.log(productTotal);
 		console.log(productTotal/allTheProducts.length);*/
 	}
-
+	//CALLED BY getScores
+	//Updates scoreboard with a green box for the winner
 	function updateScoreboard(winner, wins) {
 		console.log(winner[wins]);
 		winner[wins].style.backgroundColor = "green";
@@ -304,6 +374,8 @@
 		}
 	};
 
+	//CALLED BY updateScorebord
+	//Shows match end message
 	function endMatch() {
 		if (playerWins === 0) {
 			document.getElementById("player-match-winner").style.display = "block";
@@ -318,11 +390,11 @@
 
 	};
 
+	//CALLED WHEN USER CLICKS "Play Again" BUTTON
 	function resetGame() {
 		//reset global variables
 		possibilities = [];
 		resultsTable = null;
-		difficultySetting = 1;
 		playerProductIndex = null;
 		//activate card input fields
 		cards.forEach(card => card.disabled = false);
@@ -332,14 +404,14 @@
 		//show and hide divs respectively
 		document.getElementById("play-button").style.display = "block";
 		document.getElementById("player-score").style.display = "none";
-		document.getElementById("scores-table").style.display = "none";
+		choicesDiv.innerHTML = "";
+		choicesDiv.style.display = "none";
+		resetDiv.style.display = "none";
 		drawButton.style.display = "block";
 		drawText.style.display = "block";
-		//Reset Scores Table
-		playerWinsCell.innerHTML = "";
-		playerWinsCell.style.backgroundColor = "white";
-		computerWinsCell.innerHTML = ""
-		computerWinsCell.style.backgroundColor = "white";
+		//Reset game-result paragraph
+		gameResultDiv.style.display = "none";
+		gameResultH1.innerHTML = "";
 		//focus cursor on the first card
 		cards[0].focus();
 
