@@ -1,0 +1,164 @@
+body {
+  background-color: #ECF0F1
+}
+
+h1 {
+  color: #E74C3C;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  font-style: italic;
+  color: #2C3E50;
+  text-align: center;
+}
+
+div#difficulty {
+  display: flex;
+}
+
+div.difficulty-wrap {
+  display:inline-block;
+  border-left: 1px solid gray;
+  width:75%;
+}
+
+div.title {
+  display: inline-block;
+  width: 20%;
+  min-width: 120px;
+}
+
+div#input-cards {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+div#input-cards h2,h4{
+  margin: 5px;
+}
+
+div.card-container {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.card {
+  height: 140px;
+  width: 100px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  background-image: url("../images/card-background.jpg");
+}
+
+.card input {
+  height: 70px;
+  margin: auto;
+  font-size: 30px;
+}
+
+.invalid {
+  border-color: red;
+  background-color: yellow;
+}
+
+div#play-button {
+  text-align: center;
+}
+
+div#player-score {
+  display: none;
+  text-align: center;
+}
+
+div#player-score form {
+  font-size: 1.5rem;
+}
+
+input#product {
+  height: 35px;
+  font-size: 30px;
+}
+
+button {
+  font-size: 1.5rem;
+  border: 2px solid #E74C3C;
+  color: #ECF0F1;
+  height: 50px;
+  background-color: #3498DB;
+  margin: auto;
+  display: block;
+}
+
+button:hover {
+  border-width: 5px;
+  cursor: pointer;
+}
+
+button.active {
+  border: 5px solid #3498DB;
+  background-color: #E74C3C;
+}
+
+button#draw {
+  margin: auto;
+  font-size: 1rem;
+  height: 30px;
+}
+
+div#scores-table {
+  display: none;
+}
+
+table {
+  border: solid 2px black;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+th, td {
+  border: solid 2px black;
+  background-color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.2rem;
+}
+
+th {
+  background-color: #3498DB;
+}
+
+div#player-match-winner,#computer-match-winner {
+  display:none;
+}
+
+div#choices-div {
+  display: none;
+}
+
+div.reset-div {
+  display: none;
+}
+
+div.game-result h2 {
+  color: red;
+}
+
+div#choices-div td {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+div#choices-div th {
+  padding: 10px;
+  font-size: 1.2rem;
+}
