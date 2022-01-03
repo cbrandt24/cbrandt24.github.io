@@ -96,6 +96,7 @@ button {
   height: 50px;
   background-color: #3498DB;
   margin: auto;
+  display: block;
 }
 
 button:hover {
@@ -138,4 +139,26 @@ th {
 
 div#player-match-winner,#computer-match-winner {
   display:none;
+}
+
+div#choices-div {
+  display: none;
+}
+
+div.reset-div {
+  display: none;
+}
+
+div.game-result h2 {
+  color: red;
+}
+
+div#choices-div td {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+div#choices-div th {
+  padding: 10px;
+  font-size: 1.2rem;
 }
