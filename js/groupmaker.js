@@ -186,7 +186,7 @@ function fisherYatesShuffle(){
 }
 
 function displayBrandtRoster() {
-  studentNames = ["Adam", "Ava", "Charlie", "Eden", "Ellie", "Everett", "Gonzo", "Harrison", "Henry", "Jack", "Jackson", "Kaila", "Karar", "Kinsley", "Landon", "Logan", "Luke", "Maddyn", "Manu", "Mia", "Mikey", "Mirthik", "Nidhi", "Redeat", "Xavier", "Yashika"];
+  studentNames = ["Adam", "Ava", "Charlie", "Eden", "Ekisha", "Ellie", "Everett", "Gonzo", "Harrison", "Henry", "Jack", "Jackson", "Kaila", "Karar", "Kinsley", "Landon", "Logan", "Luke", "Maddyn", "Manu", "Mia", "Mikey", "Mirthik", "Nidhi", "Redeat", "Xavier", "Yashika"];
   rosterDiv.classList.add("brandt");
   rosterDiv.classList.remove("kendall");
   brandtClassButton.classList.add("selected");
