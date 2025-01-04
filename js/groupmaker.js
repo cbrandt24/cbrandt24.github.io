@@ -12,6 +12,7 @@ shuffleGroupsButton.addEventListener('click',makeThisManyGroups);
 shuffleStudentsButton.addEventListener('click',makeGroupsWithThisManyStudents);
 const addStudentsForm = document.querySelector('.add-students');
 let addStudentName = document.querySelector('.add-student-name');
+let groupCounter = 1;
 
 //function to create the initial student table
 //create table body
@@ -90,6 +91,8 @@ function makeThisManyGroups(){
   var row = document.createElement("tr");
   //counter to number each student within the group
   var memberNumber = 1;
+  //reset groupCounter variable to 1
+  groupCounter = 1;
   //create a new td (column) for each new group
   //this will count how many large groups we have made
   var largeGroupCounter = 0;
@@ -99,6 +102,14 @@ function makeThisManyGroups(){
       if (i%(studentsPerGroup+1)===0) {
       var cell = document.createElement("td");
       //console.log("Large Group Created");
+      
+      //Create the Group Number headers
+      var groupNumberHeader = document.createElement("h3");
+      var currentGroupNumber = document.createTextNode("Group " + groupCounter);
+      groupNumberHeader.appendChild(currentGroupNumber);
+      cell.appendChild(groupNumberHeader);
+      groupCounter++;
+      
       memberNumber = 1;
       largeGroupCounter++;
       }
@@ -107,6 +118,14 @@ function makeThisManyGroups(){
       if ((i-remainder)%(studentsPerGroup)===0) {
       var cell = document.createElement("td");
       //console.log("Regular Group Created");
+      
+      //Create the Group Number headers
+      var groupNumberHeader = document.createElement("h3");
+      var currentGroupNumber = document.createTextNode("Group " + groupCounter);
+      groupNumberHeader.appendChild(currentGroupNumber);
+      cell.appendChild(groupNumberHeader);
+      groupCounter++;
+      
       memberNumber = 1;
       }
     }
@@ -145,11 +164,21 @@ function makeGroupsWithThisManyStudents(){
   var row = document.createElement("tr");
   //counter to number each student within the group
   var memberNumber = 1;
+  //reset groupCounter variable to 1
+  groupCounter = 1;
   //create a new td (column) for each new group
   for (var i=0; i<studentNames.length; i++) {
     if (i%studentsInEachGroup===0) {
       var cell = document.createElement("td");
-      //console.log("Regular Group Created");
+      console.log("Regular Group Created");
+
+      //Create the group number headers
+      var groupNumberHeader = document.createElement("h3");
+      var currentGroupNumber = document.createTextNode("Group " + groupCounter);
+      groupNumberHeader.appendChild(currentGroupNumber);
+      cell.appendChild(groupNumberHeader);
+      groupCounter++;
+
       memberNumber = 1;
     }
 
