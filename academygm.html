@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Group Maker</title>
+
+  <link rel="stylesheet" type="text/css" href="css/academygm.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="title" class="centered">The Group Maker!</div>
+  <div id="class-buttons" class="centered">
+    <button id="academy">Math Academy</button>
+  </div>
+  <div id="roster-table">
+    <h2>Student Roster</h2>
+    <p>Click absent students.</p>
+  </div>
+  <div class="centered">
+    <form class="add-students">
+      <input type="text" name="student" class="add-student-name" placeholder="New Student's Name" required>
+      <input type="submit" value="Add Student">
+    </form>
+  </div>
+  <hr>
+  <div id="group-sizer" class="centered">
+    <table cellpadding="15">
+      <tr>
+        <td>
+          <h3>How many groups?</h3>
+          <select id=groups>
+            <option value="2">2 groups</option>
+            <option value="3">3 groups</option>
+            <option value="4">4 groups</option>
+            <option value="5">5 groups</option>
+            <option value="6">6 groups</option>
+            <option value="7">7 groups</option>
+            <option value="8">8 groups</option>
+            <option value="9">9 groups</option>
+            <option value="10">10 groups</option>
+          </select>
+          <button id=shuffle-groups>Shuffle!</button>
+        </td>
+        <td style="background:none; border:none">
+          <h1>OR</h1>
+        </td>
+        <td>
+          <h3>How many students per group?</h3>
+          <select id=students>
+            <option value="2">2 students</option>
+            <option value="3">3 students</option>
+            <option value="4">4 students</option>
+            <option value="5">5 students</option>
+            <option value="6">6 students</option>
+            <option value="7">7 students</option>
+            <option value="8">8 students</option>
+            <option value="9">9 students</option>
+            <option value="10">10 students</option>
+          </select>
+          <button id=shuffle-students>Shuffle!</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id=groups-table class="centered">
+  </div>
+  <!--<div id=roles>
+    <p>1: Group Leader</p>
+    <p>2: Gather Materials</p>
+    <p>3: Check Work</p>
+    <p>4: Reporter</p>
+  </div>
+<-->
+
+  <script src="js/academygm.js"></script>
+</body>
+
+</html>
