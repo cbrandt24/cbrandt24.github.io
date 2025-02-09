@@ -1,0 +1,145 @@
+/* 
+//<uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700
+
+/*.caveat-<uniquifier> {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+*/
+
+div#title {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+div.centered {
+  max-width: fit-content;
+  margin-inline: auto;
+  padding: 15px;
+}
+
+div#class-buttons button {
+  border: 5px solid black;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2rem;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button#academy {
+  background-image: linear-gradient(to right, #763fc4 0%, #c94edf 51%, #c426a7 100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+}
+
+button#academy:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+button#academy.selected {
+  box-shadow: 0 0 20px 20px #82a2d2;
+}
+
+div#roster-table {
+  max-width: fit-content;
+  border: 2px #ff0000;
+  margin-inline: auto;
+}
+
+div#roster-table.academy button {
+  background-color: rgb(79, 36, 234);
+}
+
+div#roster-table button {
+  background-color: #000000;
+  /* Green */
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+div#roster-table button:hover {
+  color: red;
+}
+
+div#roster-table button:focus {
+  outline: none;
+}
+
+div#roster-table button.active {
+  background-color: white;
+  color: red;
+}
+
+div#roster-table table {
+  border-radius: 10px;
+  border: 4px solid black;
+}
+
+div#group-sizer table td {
+  margin: auto;
+  background-color: #4CAF50;
+  border-radius: 10px;
+  border: 4px solid black;
+}
+
+div#groups-table table td {
+  margin: auto;
+  padding: 10px;
+  background-color: yellow;
+  border-radius: 10px;
+  border: 4px solid black;
+}
+
+div#group-sizer select {
+  size: 1.5rem;
+}
+
+div#group-sizer button {
+  font-family: 'Caveat', cursive;
+  font-weight: 400;
+  font-size: 1.5rem;
+  background-image: linear-gradient(to right, #ebd0b6 0%, #9b5a4d 51%, #a01624 100%);
+  margin: 10px;
+  padding: 5px 5px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: inline;
+}
+
+div#group-sizer button:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
