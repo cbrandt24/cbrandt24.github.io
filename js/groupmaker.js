@@ -215,7 +215,7 @@ function fisherYatesShuffle(){
 }
 
 function displayBrandtRoster() {
-  studentNames = ["Adam", "Ava", "Charlie", "Eden", "Ekisha", "Ellie", "Everett", "Gonzo", "Harrison", "Henry", "Jack", "Jackson", "Kaila", "Karar", "Kinsley", "Landon", "Logan", "Luke", "Maddyn", "Manu", "Mia", "Mikey", "Mirthik", "Nidhi", "Redeat", "Xavier", "Yashika"];
+  studentNames = ["Dharan", "Aya", "Sawyer A", "Susan", "Logan", "Nasir", "Kam", "Belle", "Cillian", "Ryan", "Jordan", "Layla", "Wyatt", "Isabel", "Bahar", "Rouble", "Mason", "Chloe", "Hafuwa", "Nysa", "Jesus", "Malia", "Anthony", "Amara", "Sebastian", "Sawyer W"];
   rosterDiv.classList.add("brandt");
   rosterDiv.classList.remove("kendall");
   brandtClassButton.classList.add("selected");
@@ -224,7 +224,7 @@ function displayBrandtRoster() {
 }
 
 function displayKendallRoster() {
-  studentNames = ["Anantbir", "Avery", "Benjamin", "Caleb", "Chance", "Charline", "Chase", "Chris", "Cole", "Delaney", "Derrin", "Elena", "Emerson", "Emry", "Gavin", "Kadija", "Lana", "Mav", "Oscar", "Penelope", "Quinn", "Roheen", "RV", "Saul", "Sophia", "Susanna", "Wesley"];
+  studentNames = ["Laith", "Saanvi", "Huthesh", "Steven", "Costello", "Neema", "Dacey", "Emi", "Aydin", "Saje", "Opal", "Caleb", "Eishaan", "Lillian", "Elijah", "Laiha", "Hannah", "Luca", "Sarayu", "Swar", "Kash", "Cecelia", "Eshak", "Deron", "Natalie", "Aryaman", "Kanika"];
   rosterDiv.classList.add("kendall");
   rosterDiv.classList.remove("brandt");
   kendallClassButton.classList.add("selected");
